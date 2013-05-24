@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>Загрузка файлов</title>
+	</head>
+	<body style="position: fixed; top: 50%; left: 50%; width: 600px; height:200px; margin-left:-300px; margin-top:-100px; font-size: 250%;">
+		{% if stations %}
+		<form action="/" method="post">
+			<select name="station_id">			
+			{% for id, info in stations.iteritems() %}
+					<option value="{{ id }}">{{ info.name }}</option>
+			{% endfor %}
+			</select>			
+			<input name="filename" type="text" placeholder="имя файла" style="min-width: 350px;">
+			<input type="submit" value="Получить">
+		</form>
+		{% endif %}
+		{% if error %}
+			<p style="color: red">{{ error }}</p>
+		{% endif %}
+	</body>
+</html>
